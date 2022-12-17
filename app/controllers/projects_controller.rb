@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    @projects = Project.all
+    @projects = Project.order(created_at: :desc).all
 
     render json: @projects
   end
@@ -49,3 +49,4 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:name, :description, :technologies, :image, :likes_counter, :comments_counter)
   end
+end
